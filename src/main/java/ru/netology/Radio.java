@@ -1,29 +1,47 @@
 package ru.netology;
 
 public class Radio {
+    private int amountStations = 10;
+    private int maxVolume = 100;
+    private int minVolume = 0;
     private int currentVolume;
+    private int maxStation = calculateMaxStation();
+    private int minStation = 0;
     private int currentStation;
+
+    public Radio () {
+    }
+
+    public Radio(int amountStations) {
+        this.amountStations = amountStations;
+        maxStation = calculateMaxStation();
+    }
+
+
+    public int calculateMaxStation() {
+       return amountStations - 1;
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
+        if (currentVolume < minVolume) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > maxVolume) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void muteVolume() {
-        setCurrentVolume(0);
+        setCurrentVolume(minVolume);
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         } else {
             return;
@@ -31,10 +49,10 @@ public class Radio {
     }
 
     public void turnDownVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
-        if (currentVolume == 0) {
+        if (currentVolume == minVolume) {
             return;
         }
     }
@@ -44,28 +62,28 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (currentStation <= 0) {
+        if (currentStation < minStation) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
         this.currentStation = currentStation;
     }
 
     public void switchTheNextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
         } else {
-            currentStation = 0;
+            currentStation = minStation;
         }
     }
 
     public void switchThePreviousStation() {
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation = currentStation - 1;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 }
