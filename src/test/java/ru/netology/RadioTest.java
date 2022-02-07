@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
     Radio radio = new Radio();
+
     @Test
     public void shouldSetCurrentVolume() {
         radio.setCurrentVolume(8);
@@ -33,7 +34,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldMute () {
+    public void shouldMute() {
 
         radio.muteVolume();
         int expected = 0;
@@ -42,7 +43,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolume () {
+    public void shouldIncreaseVolume() {
 
         radio.setCurrentVolume(100);
         radio.increaseVolume();
@@ -54,7 +55,7 @@ class RadioTest {
 
 
     @Test
-    public void shouldIncreaseVolumeBoundaryValuesOne () {
+    public void shouldIncreaseVolumeBoundaryValuesOne() {
 
         radio.setCurrentVolume(99);
         radio.increaseVolume();
@@ -64,7 +65,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldIncreaseVolumeBoundaryValuesTwo () {
+    public void shouldIncreaseVolumeBoundaryValuesTwo() {
 
         radio.setCurrentVolume(100);
         radio.increaseVolume();
@@ -75,7 +76,7 @@ class RadioTest {
 
 
     @Test
-    public void shouldTurnDownVolume () {
+    public void shouldTurnDownVolume() {
 
         radio.setCurrentVolume(100);
         radio.turnDownVolume();
@@ -85,7 +86,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldTurnDownVolumeBoundaryValues () {
+    public void shouldTurnDownVolumeBoundaryValues() {
 
         radio.setCurrentVolume(0);
         radio.turnDownVolume();
@@ -95,7 +96,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentStation () {
+    public void shouldSetCurrentStation() {
 
         radio.setCurrentStation(8);
         int expected = 8;
@@ -104,7 +105,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentStationBoundaryValuesOne () {
+    public void shouldSetCurrentStationBoundaryValuesOne() {
 
         radio.setCurrentStation(0);
         int expected = 0;
@@ -113,7 +114,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentStationBoundaryValuesTwo () {
+    public void shouldSetCurrentStationBoundaryValuesTwo() {
 
         radio.setCurrentStation(-1);
         int expected = 0;
@@ -122,7 +123,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentStationBoundaryValuesThree () {
+    public void shouldSetCurrentStationBoundaryValuesThree() {
 
         radio.setCurrentStation(10);
         int expected = 0;
@@ -131,7 +132,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchTheNextStation () {
+    public void shouldSwitchTheNextStation() {
 
         radio.setCurrentStation(0);
         radio.switchTheNextStation();
@@ -141,7 +142,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchTheNextStationBoundaryValuesOne () {
+    public void shouldSwitchTheNextStationBoundaryValuesOne() {
 
         radio.setCurrentStation(8);
         radio.switchTheNextStation();
@@ -151,7 +152,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchTheNextStationBoundaryValuesTwo () {
+    public void shouldSwitchTheNextStationBoundaryValuesTwo() {
 
         radio.setCurrentStation(9);
         radio.switchTheNextStation();
@@ -161,7 +162,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchThePreviousStation () {
+    public void shouldSwitchThePreviousStation() {
 
         radio.setCurrentStation(9);
         radio.switchThePreviousStation();
@@ -171,7 +172,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchThePreviousStationBoundaryValuesOne () {
+    public void shouldSwitchThePreviousStationBoundaryValuesOne() {
 
         radio.setCurrentStation(1);
         radio.switchThePreviousStation();
@@ -181,7 +182,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchThePreviousStationBoundaryValuesTwo () {
+    public void shouldSwitchThePreviousStationBoundaryValuesTwo() {
 
         radio.setCurrentStation(0);
         radio.switchThePreviousStation();
@@ -191,7 +192,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchTheNextStationBoundaryValuesConstructor () {
+    public void shouldSwitchTheNextStationBoundaryValuesConstructor() {
         Radio radio1 = new Radio(30);
         radio1.setCurrentStation(29);
         radio1.switchTheNextStation();
@@ -201,7 +202,7 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSwitchThePreviousStationBoundaryValuesConstructor () {
+    public void shouldSwitchThePreviousStationBoundaryValuesConstructor() {
         Radio radio1 = new Radio(30);
         radio1.setCurrentStation(0);
         radio1.switchThePreviousStation();
@@ -211,13 +212,11 @@ class RadioTest {
     }
 
     @Test
-    public void shouldSetCurrentStationConstructor () {
+    public void shouldSetCurrentStationConstructor() {
         Radio radio1 = new Radio(30);
         radio1.setCurrentStation(29);
         int expected = 29;
         int actual = radio1.getCurrentStation();
         assertEquals(expected, actual);
     }
-
-
 }
